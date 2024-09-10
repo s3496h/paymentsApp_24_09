@@ -26,6 +26,10 @@ public class PaymentController {
             @RequestParam(value = "amount") Integer amount,
             @RequestParam(value = "paymentKey") String paymentKey) throws Exception {
 
+        if(orderId.startsWith("sample-") && amount != 50000){
+            throw  new Exception("Amount 가 50000원이 아닌데?");
+        }
+
         String secretKey = "test_sk_zXLkKEypNArWmo50nX3lmeaxYG5R:";
 
         Base64.Encoder encoder = Base64.getEncoder();
